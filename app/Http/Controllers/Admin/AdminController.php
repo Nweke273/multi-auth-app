@@ -10,8 +10,34 @@ use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
+    function create(Request $request)
+    {
+        //Validate Inputs
+        $request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required|min:5|max:30',
+            'cpassword' => 'required|min:5|max:30|same:password'
+        ]);
+
+        $responseStatus = 0;
+
+        $user = new Admin();
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->password = \Hash::make($request->password);
+        $save = $user->save();
+
+        if ($save) {
+            $responseStatus = 1;
+        } else {
+            $responseStatus = 2;
+        }
+        return response()->json([[$responseStatus]]);
+    }
+
     function check(Request $request){
-         //Validate Inputs
+        $responseStatus = 0;
          $request->validate([
             'email'=>'required|email|exists:admins,email',
             'password'=>'required|min:5|max:30'
@@ -22,10 +48,12 @@ class AdminController extends Controller
          $creds = $request->only('email','password');
 
          if( Auth::guard('admin')->attempt($creds) ){
-             return redirect()->route('admin.home');
+            $responseStatus = 1;
+
          }else{
-             return redirect()->route('admin.login')->with('fail','Incorrect credentials');
+            $responseStatus = 3;
          }
+           return response()->json([[$responseStatus]]);
     }
 
     function logout(){

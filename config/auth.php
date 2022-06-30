@@ -21,10 +21,7 @@ return [
        'driver'=>'eloquent',
        'model'=>App\Models\Admin::class,
     ],
-    'doctor'=>[
-        'driver'=>'eloquent',
-        'model'=>App\Models\Doctor::class,
-     ],
+  
 
     /*
     |--------------------------------------------------------------------------
@@ -58,10 +55,7 @@ return [
            'driver'=>'session',
            'provider'=>'admins',
         ],
-        'doctor'=>[
-            'driver'=>'session',
-            'provider'=>'doctors',
-         ],
+      
     ],
 
     /*
@@ -95,10 +89,7 @@ return [
            'driver'=>'eloquent',
            'model'=>App\Models\Admin::class,
         ],
-        'doctors'=>[
-            'driver'=>'eloquent',
-            'model'=>App\Models\Doctor::class,
-         ],
+       
     ],
 
     /*
@@ -127,10 +118,7 @@ return [
             'driver'=>'eloquent',
             'model'=>App\Models\Admin::class,
         ],
-        'doctors'=>[
-            'driver'=>'eloquent',
-            'model'=>App\Models\Doctor::class,
-        ]
+       
     ],
 
     /*
