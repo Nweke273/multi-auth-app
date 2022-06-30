@@ -32,7 +32,7 @@
                     @auth
                         <a href="{{ url('/home') }}" class="text-sm text-gray-700 underline">Home</a>
                     @else
-                        <a href="{{ route('user.login') }}" class="text-sm text-gray-700 underline"style="margin-right:20px">User Login</a>
+                        <a href="{{ route('user.login') }}" class="text-sm text-gray-700 underline" style="margin-right:70px">User Login</a>
                         <a href="{{ route('admin.login') }}" class="text-sm text-gray-700 underline" style="margin-right:50px">Admin Login</a>
                         @if (Route::has('user.register'))
                             <a href="{{ route('user.register') }}" class="ml-4 text-sm text-gray-700 underline">Register User</a>
@@ -41,9 +41,10 @@
                     @endauth
                 </div>
             @endif
-<div class="container">
-    <div class="row"><h1>Multi Auth Web Application</h1></div>
-</div>
+
+            <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
+                <h1>Multi Auth Web Application</h1>
+            </div>
         </div>
     </body>
 </html>
