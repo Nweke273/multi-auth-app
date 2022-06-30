@@ -45,6 +45,9 @@ Route::prefix('admin')->name('admin.')->group(function(){
     Route::middleware(['guest:admin','PreventBackHistory'])->group(function(){
           Route::view('/login','dashboard.admin.login')->name('login');
           Route::post('/check',[AdminController::class,'check'])->name('check');
+          Route::view('/register','dashboard.admin.register')->name('register');
+          Route::post('/create',[AdminController::class,'create'])->name('create');
+          
     });
 
     Route::middleware(['auth:admin','PreventBackHistory'])->group(function(){
@@ -54,18 +57,4 @@ Route::prefix('admin')->name('admin.')->group(function(){
 
 });
 
-Route::prefix('doctor')->name('doctor.')->group(function(){
 
-       Route::middleware(['guest:doctor','PreventBackHistory'])->group(function(){
-            Route::view('/login','dashboard.doctor.login')->name('login');
-            Route::view('/register','dashboard.doctor.register')->name('register');
-            Route::post('/create',[DoctorController::class,'create'])->name('create');
-            Route::post('/check',[DoctorController::class,'check'])->name('check');
-       });
-
-       Route::middleware(['auth:doctor','PreventBackHistory'])->group(function(){
-            Route::view('/home','dashboard.doctor.home')->name('home');
-            Route::post('logout',[DoctorController::class,'logout'])->name('logout');
-       });
-
-});

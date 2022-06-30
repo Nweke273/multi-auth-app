@@ -19,7 +19,7 @@
             <div class="col-md-4 offset-md-4" style="margin-top: 45px;">
                 <h4 style="background-color: rgb(255, 153, 0); text-align:center; padding:10px; font-family: Poppins,sans-serif;
                   font-size: .8125rem;
-                  font-weight: 800; border-radius:4px">User Register</h4>
+                  font-weight: 800; border-radius:4px">Admin Register</h4>
                 <hr>
                 <form autocomplete="off">
                     @if (Session::get('success'))
@@ -112,7 +112,7 @@
         $.ajax({
             type: 'POST',
             url: '{{ route('
-            user.create ') }}',
+            admin.create ') }}',
             data: {
                 name: $name,
                 email: $email,
@@ -124,7 +124,7 @@
                 console.log(response);
                 if (response == 1) {
                     window.location.replace('{{route('
-                        user.home ')}}');
+                        admin.home ')}}');
                 } else if (response == 3) {
                     $("#err").hide().html("Username or Password  Incorrect. Please Check").fadeIn('slow');
                 }
